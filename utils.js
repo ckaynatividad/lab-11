@@ -1,20 +1,9 @@
-export const results = [
-    { 
-        id: '',
-        appeared: '',
-        chosen: ''
-    },
-    {
-        id: '',
-        appeared: '',
-        chosen: ''
-    },
-];
 
-export function findById(id, pokes){
+
+export function findByPokemon(pokemon, pokes){
 
     for (let poke of pokes) {
-        if (poke.id === id){
+        if (poke.pokemon === pokemon){
             return poke;
         }
     }
@@ -24,18 +13,49 @@ import { pokemon } from './pokemon.js';
 
 export function getPoke(){
     
-    let lsPokemon = localStorage.getItem('POKEMON');
-    const pokes = JSON.parse(lsPokemon);
+    const pokeString = localStorage.getItem('POKEMON') || '[]';
+    const poke = JSON.parse(pokeString);
 
-    if (!pokes){
-        const pokeString = JSON.stringify(products);
-        localStorage.setItem('POKEMON', pokeString);
-    }
-    return pokes || pokemon;
+    return poke;
 
 }
+
+
+export function encounter(pokemon){
+    let pokeArray = getPoke();
+    let foundPoke = findByPokemon(pokemon, pokeArray);
+
+    if (foundPoke){
+        foundPoke.encounter++;
+
+    } else {
+        const newPoke = {
+            pokemon: pokemon.pokemon,
+            encountered: 1,
+            captured: 0
+        };
+
+        pokeArray.push(newPoke);
+    }
+    const arrayString = JSON.stringify(pokeArray);
+    localStorage.setItem('POKEMON', arrayString);
+    return pokeArray;
+}
+
+
 
 export function getResults(){
-
-    let 
+    const resultString = localStorage.getItem('RESULT') || [];
+    const result = JSON.parse(resultString);
+    return result;
 }
+
+export function getChosen(){
+    const chosenString = localStorage.getItem('CHOSEN') || [];
+    const chosen = JSON.parse(chosenString);
+    return chosen;
+}
+
+// get poke form local storage
+// increment caught 
+// 

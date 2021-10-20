@@ -1,4 +1,5 @@
 import { pokemon } from './pokemon.js';
+import { encounter } from './utils.js';
 console.log(pokemon);
 
 const caughtSpan = document.getElementById('caught');
@@ -28,7 +29,6 @@ const generatePoke = ()=>{
         rando2 = Math.floor(Math.random() * pokemon.length);
         rando3 = Math.floor(Math.random() * pokemon.length);
     }
-    console.log(rando1, rando2);
 
     let poke1 = pokemon[rando1];
     pokeImg1.src = poke1.url_image;
@@ -38,20 +38,24 @@ const generatePoke = ()=>{
 
     let poke3 = pokemon[rando3];
     pokeImg3.src = poke3.url_image;
-
+    return [
+        poke1,
+        poke2,
+        poke3
+    ];
 };
 
-generatePoke();
 
+let pokemonGen = generatePoke();
+encounter(pokemonGen[0]);
+encounter(pokemonGen[1]);
+encounter(pokemonGen[2]);
 button.addEventListener('click', ()=>{
     const selected = document.querySelector('input[type=radio]:checked');
   // if (!selected) {
   //   return 
   // const userSelect = selected.value;
-    generatePoke();
-    appeared++;
-    appeared++;
-    appeared++;
-    appearSpan.textContent = appeared;
+    
+    
 });
 
