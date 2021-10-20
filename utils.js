@@ -17,7 +17,6 @@ export function getPoke(){
     const poke = JSON.parse(pokeString);
 
     return poke;
-
 }
 
 
@@ -37,11 +36,14 @@ export function encounter(pokemon){
 
         pokeArray.push(newPoke);
     }
-    const arrayString = JSON.stringify(pokeArray);
-    localStorage.setItem('POKEMON', arrayString);
-    return pokeArray;
+    
+    return setPoke(pokeArray);
 }
 
+export function setPoke(pokeArray){
+    const arrayString = JSON.stringify(pokeArray);
+    localStorage.setItem('POKEMON', arrayString);
+}
 
 
 export function getResults(){
