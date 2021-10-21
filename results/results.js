@@ -1,7 +1,7 @@
 import { pokemon } from '../pokemon.js';
-import { getPoke, findByPokemon } from '../utils.js';
+import { getPokeArray, findByPokemon } from '../utils.js';
 
-const results = getPoke();
+const results = getPokeArray();
 
 const main = document.getElementById('main');
 
@@ -23,7 +23,7 @@ const pokeNames = results.map((poke)=>{
     return poke.pokemon;
 });
 
-const captured = results.map(poke=>poke.captured);
+const captured = results.map(poke=>poke.capture);
 
 
 var ctx = document.getElementById('resultsChart').getContext('2d');

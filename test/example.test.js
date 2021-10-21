@@ -1,18 +1,56 @@
-// IMPORT MODULES under test here:
-// import { example } from '../example.js';
-
+import { findByPokemon, getPokeArray, caught, encounter } from '../utils.js';
+import { pokemon } from '../pokemon.js';
 const test = QUnit.test;
 
-test('time to test a function', (expect) => {
-    //Arrange
-    // Set up your arguments and expectations
-    const expected = true;
-    
-    //Act 
-    // Call the function you're testing and set the result to a const
-    const actual = true;
+test('getPoke returns POKEARRAY from localStorage', (expect)=>{
 
-    //Expect
-    // Make assertions about what is expected versus the actual result
-    expect.equal(actual, expected);
+    const pokeArray = [
+        { pokemon: 'bulbasaur', encounter: 1, caught: 1 },
+        { pokemon: 'charmander', encounter: 1, caught: 1 },
+        { pokemon: 'squirtle', encounter: 2, caught: 1 }
+    ];
+    localStorage.setItem('POKEARRAY', JSON.stringify(pokeArray));
+
+    const actual = getPokeArray();
+
+    expect.deepEqual(actual, pokeArray);
+});
+
+test('getPoke returns empty if none in localStorage', (expect)=>{
+    
+    localStorage.removeItem('POKEARRAY');
+
+    const actual = getPokeArray();
+
+    expect.deepEqual(actual, []);
+});
+
+test('encounter increments when pokemon comes up', (expect)=>{
+    const results = [
+        { pokemon: 'bulbasaur', encounter: 0, caught: 0 }
+    ];
+    localStorage.setItem('RESULTS', JSON.stringify(results));
+    const expected = [
+        { pokemon: 'bulbasaur', encounter: 1, caught: 0 }
+    ];
+
+    encounter('bulbasaur');
+    const actual = getPokeArray();
+
+    expect.deepEqual(actual, expected);
+});
+
+test('capturePoke increments when chosen', (expect)=>{
+    const results = [
+        { pokemon: 'bulbasaur', encounter: 1, caught: 0 },
+    ];
+    localStorage.setItem('RESULTS', JSON.stringify(results));
+    const expected = [
+        { pokemon: 'bulbasaur', encounter: 1, caught: 1 },
+    ];
+
+    caught('bulbasaur');
+    const actual = getPokeArray();
+
+    expect.deepEqual(actual, expected);
 });

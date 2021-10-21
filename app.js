@@ -1,5 +1,5 @@
 import { pokemon } from './pokemon.js';
-import { capturePoke, encounter } from './utils.js';
+import { caught, encounter } from './utils.js';
 console.log(pokemon);
 
 
@@ -64,8 +64,8 @@ button.addEventListener('click', ()=>{
     if (selected){
         const chosen = selected.value;
         totalPlays++;
-        capturePoke(chosen);
-        if (totalPlays >= 5){
+        caught(chosen);
+        if (totalPlays >= 10){
             window.location = './results';
         } else {
             generatePoke();

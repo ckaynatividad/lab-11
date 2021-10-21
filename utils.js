@@ -29,7 +29,7 @@ export function encounter(pokemon){
         const newPoke = {
             pokemon: pokemon,
             encounter: 1,
-            captured: 0
+            caught: 0
         };
 
         pokeArray.push(newPoke);
@@ -44,21 +44,11 @@ export function encounter(pokemon){
 // }
 
 
-export function capturePoke(pokemon){
+export function caught(pokemon){
     let pokeArray = getPokeArray();
     let foundPoke = findByPokemon(pokeArray, pokemon);
     
-    foundPoke.captured++;
-    // if (foundPoke){
-    //     foundPoke.captured++;
-    // } else {
-    //     const newPoke = {
-    //         pokemon: pokemon.pokemon,
-    //         encountered: 1,
-    //         captured: 0
-    //     };
+    foundPoke.caught++;
 
-    //     pokeArray.push(newPoke);
-    // }
     localStorage.setItem('POKEARRAY', JSON.stringify(pokeArray));
 }

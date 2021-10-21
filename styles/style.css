@@ -2,3 +2,18 @@
 input:checked + img {
     
 }
+
+#pokemon {
+
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    background: #fff url(https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/choose-wisely-iffah-riyanti.jpg) center center/cover no-repeat;
+}
+
+img {
+    width: 300px;
+}
