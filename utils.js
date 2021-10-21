@@ -46,18 +46,20 @@ export function setPoke(pokeArray){
 }
 
 
-export function getResults(){
-    const resultString = localStorage.getItem('RESULT') || [];
-    const result = JSON.parse(resultString);
-    return result;
-}
+export function capturePoke(pokemon){
+    let pokeArray = getPoke();
+    let foundPoke = findByPokemon(pokemon, pokeArray);
+    
+    if (foundPoke){
+        foundPoke.captured++;
+    } else {
+        const newPoke = {
+            pokemon: pokemon.pokemon,
+            encountered: 1,
+            captured: 0
+        };
 
-export function getChosen(){
-    const chosenString = localStorage.getItem('CHOSEN') || [];
-    const chosen = JSON.parse(chosenString);
-    return chosen;
+        pokeArray.push(newPoke);
+    }
+    return setPoke(pokeArray);
 }
-
-// get poke form local storage
-// increment caught 
-// 
