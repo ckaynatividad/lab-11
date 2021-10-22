@@ -1,0 +1,16 @@
+.chart {
+    width: 600px;
+    height: 300px;
+    
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    background-color: rgba(250, 250, 247, 0.548);
+}
+
+body {
+    background: #fff url(https://i.pinimg.com/originals/f3/64/b7/f364b7d0a49566891789d291b8b2e53f.png) center center/cover no-repeat;
+}

@@ -1,7 +1,4 @@
 
-input:checked + img {
-    
-}
 
 #pokemon {
 
@@ -16,4 +13,10 @@ body {
 
 img {
     width: 300px;
+}
+
+button {
+
+    margin-top: 2rem;
+    margin-left: 50%;
 }
