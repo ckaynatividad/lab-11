@@ -1,57 +1,61 @@
 import { pokemon } from '../pokemon.js';
-import { getPoke, findByPokemon } from '../utils.js';
+import { getPokeArray, findByPokemon } from '../utils.js';
 
-const results = getPoke();
+const pokeArray = getPokeArray();
 
 const main = document.getElementById('main');
 
-for (let result of results){
-    const poke = findByPokemon(pokemon, result.pokemon);
-    const div = document.createElement('div');
+for (let one of pokeArray){
+    const poke = findByPokemon(pokemon, one.pokemon);
+    const divCon = document.createElement('div');
+    const header = document.createElement('h3');
+    header.textContent = poke.pokemon;
     const img = document.createElement('img');
-    img.src - `../${pokemon.url_image}`;
+    img.src = poke.url_image;
+    const div = document.createElement('div');
+    const p = document.createElement('p');
     const resultSpan = document.createElement('span');
-    resultSpan.textContent = `Encountered: ${result.encounter}`;
+    resultSpan.textContent = `Encounters: ${one.encounter} `;
     const resultSpan2 = document.createElement('span');
-    resultSpan2.textContent = `Captured: ${result.captured}`;
+    resultSpan2.textContent = `Captured: ${one.caught}`;
+    p.append(resultSpan, resultSpan2);
+    p.classList.add('results-text');
+    div.append(header, img, p);
 
-    div.append(img, resultSpan2, resultSpan2);
-    main.append(div);
+    divCon.append(div);
+    main.append(divCon);
 }
 
-const pokeNames = results.map((poke)=>{
+const pokeNames = pokeArray.map((one)=>{
+    const poke = findByPokemon(pokemon, one.pokemon);
     return poke.pokemon;
 });
 
-const captured = results.map(poke=>poke.captured);
+const captured = pokeArray.map(one=>one.caught);
+const encountered = pokeArray.map(one=>one.encounter);
 
 
 var ctx = document.getElementById('resultsChart').getContext('2d');
-var myChart = new Chart(ctx, {
+// eslint-disable-next-line no-undef
+new Chart(ctx, {
     type: 'bar',
     data: {
         labels: pokeNames,
         datasets: [{
-            label: '# of Times Captured',
             data: captured,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
+            backgroundColor :'rgba(91,219,52,0.31)',
+            borderColor : 'rgba(136,136,136,0.5)',
+            label:'captured' },
+        
+        {
+            data : encountered,
+            backgroundColor :'rgba(46,127,204,0.27)',
+            borderColor : '#aaaaaa',
+            label:'encountered'
+        }
+        ],
+        borderWidth: 1
+        
     },
     options: {
         scales: {

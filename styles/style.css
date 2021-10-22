@@ -1,4 +1,40 @@
 
-input:checked + img {
+
+input[type='radio']:checked + img {
+        animation: bounce 1.5s;
+        animation-iteration-count: 1;
     
+    }
+    @keyframes bounce {
+        80% { transform:translateY(-15%); }
+        90% { transform:translateY(0%); }
+        95% { transform:translateY(-7%); }
+        97% { transform:translateY(0%); }
+        99% { transform:translateY(-3%); }
+        100% { transform:translateY(0); }
+    }
+
+
+input[type=radio]{
+    display: none;
+}
+
+#pokemon {
+
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    background: #fff url(https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/choose-wisely-iffah-riyanti.jpg) center center/cover no-repeat;
+}
+
+img {
+    width: 300px;
+}
+
+button {
+    margin-top: 2rem;
+    margin-left: 50%;
 }
