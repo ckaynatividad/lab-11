@@ -45,7 +45,7 @@ new Chart(ctx, {
             data: captured,
             backgroundColor :'rgba(91,219,52,0.31)',
             borderColor : 'rgba(136,136,136,0.5)',
-            label:'captured'},
+            label:'captured' },
         
         {
             data : encountered,

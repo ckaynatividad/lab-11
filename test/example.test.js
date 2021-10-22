@@ -1,5 +1,5 @@
-import { findByPokemon, getPokeArray, caught, encounter, setPoke } from '../utils.js';
-import { pokemon } from '../pokemon.js';
+import { getPokeArray, caught, encounter, setPoke } from '../utils.js';
+
 const test = QUnit.test;
 
 test('getPoke returns POKEARRAY from localStorage', (expect)=>{

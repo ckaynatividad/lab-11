@@ -1,6 +1,6 @@
 import { pokemon } from './pokemon.js';
 import { caught, encounter } from './utils.js';
-console.log(pokemon);
+// console.log(pokemon);
 
 
 
