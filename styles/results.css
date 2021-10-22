@@ -1,7 +1,7 @@
 .chart {
     width: 600px;
     height: 300px;
-    
+    margin-top: 3rem;
 }
 
 main {
@@ -9,6 +9,8 @@ main {
     justify-content: center;
     justify-content: space-evenly;
     background-color: rgba(250, 250, 247, 0.548);
+    font-size: small;
+    color: rgba(0, 0, 0, 0.692);
 }
 
 body {

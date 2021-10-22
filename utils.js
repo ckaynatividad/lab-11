@@ -52,3 +52,8 @@ export function caught(pokemon){
 
     localStorage.setItem('POKEARRAY', JSON.stringify(pokeArray));
 }
+
+export function setPoke(pokeArray){
+
+    localStorage.setItem('POKEARRAY', JSON.stringify(pokeArray));
+}

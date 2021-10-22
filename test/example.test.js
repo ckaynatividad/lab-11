@@ -1,4 +1,4 @@
-import { findByPokemon, getPokeArray, caught, encounter } from '../utils.js';
+import { findByPokemon, getPokeArray, caught, encounter, setPoke } from '../utils.js';
 import { pokemon } from '../pokemon.js';
 const test = QUnit.test;
 
@@ -53,4 +53,15 @@ test('capturePoke increments when chosen', (expect)=>{
     const actual = getPokeArray();
 
     expect.deepEqual(actual, expected);
+});
+
+test('setPoke sets a pokemon in localStorage', (expect)=>{
+    const results = [
+        { pokemon: 'bulbasaur', encounter: 1, caught: 0 },
+    ];
+    setPoke(results);
+    const actual = getPokeArray();
+
+    expect.deepEqual(actual, results);
+
 });
