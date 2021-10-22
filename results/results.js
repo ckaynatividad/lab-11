@@ -10,6 +10,8 @@ for (let one of pokeArray){
     const divCon = document.createElement('div');
     const header = document.createElement('h3');
     header.textContent = poke.pokemon;
+    const img = document.createElement('img');
+    img.src = poke.url_image;
     const div = document.createElement('div');
     const p = document.createElement('p');
     const resultSpan = document.createElement('span');
@@ -18,7 +20,7 @@ for (let one of pokeArray){
     resultSpan2.textContent = `Captured: ${one.caught}`;
     p.append(resultSpan, resultSpan2);
     p.classList.add('results-text');
-    div.append(header, p);
+    div.append(header, img, p);
 
     divCon.append(div);
     main.append(divCon);
@@ -34,7 +36,8 @@ const encountered = pokeArray.map(one=>one.encounter);
 
 
 var ctx = document.getElementById('resultsChart').getContext('2d');
-var myChart = new Chart(ctx, {
+// eslint-disable-next-line no-undef
+new Chart(ctx, {
     type: 'bar',
     data: {
         labels: pokeNames,
